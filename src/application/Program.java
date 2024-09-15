@@ -21,15 +21,15 @@ public class Program {
 		
 		System.out.print("Enter department's name:");
 		String departmentName = sc.nextLine();
-		System.out.println("*Enter worker data*");
+		System.out.println("\n*Enter worker data*");
 		System.out.print("Name:");
 		String workerName = sc.nextLine();
-		System.out.print("Level:");
+		System.out.print("Worker Level (J/M/S):");
 		String workerLevel = sc.nextLine();
 		System.out.print("Base salary:");
 		double baseSalary = sc.nextDouble();
 		
-		Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel), baseSalary, new Department(departmentName));
+		Worker worker = new Worker(workerName, WorkerLevel.workerLevelType(workerLevel), baseSalary, new Department(departmentName));
 		
 		System.out.print("\nHow many contracts to this worker?");
 		int contractsQuantity = sc.nextInt();
@@ -51,7 +51,9 @@ public class Program {
 		String monthAndYear = sc.nextLine();
 		int month = Integer.parseInt(monthAndYear.substring(0, 2));
 		int year = Integer.parseInt(monthAndYear.substring(3));
+		
 		System.out.println("Name:" + worker.getName());
+		System.out.println("Worker Level:" + worker.getLevel());
 		System.out.println("Department:" + worker.getDepartment().getName());
 		System.out.printf("Income for " + monthAndYear + ": $" + String.format("%.2f", worker.income(year, month)));
 		
